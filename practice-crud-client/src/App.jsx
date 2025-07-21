@@ -4,6 +4,7 @@ import './App.css'
 import Home from './pages/Home'
 import Root from './layouts/Root'
 import Users from './components/Users'
+import UpdateUser from './components/UpdateUser'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element={<Root/>}>
           <Route index element={<Home/>}/>
           <Route path='/users' element={<Users/>}></Route>
+          <Route path='/update/:id' element={<UpdateUser/>}></Route>
         </Route>
       </Routes>
     </>

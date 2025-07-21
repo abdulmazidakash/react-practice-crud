@@ -28,7 +28,7 @@ export default function Home() {
 			// console.log('data:',data)
 			if(data.insertedId){
 				Swal.fire({
-					position: "top-center",
+					// position: "top-center",
 					icon: "success",
 					title: "Your added successfully",
 					showConfirmButton: false,
