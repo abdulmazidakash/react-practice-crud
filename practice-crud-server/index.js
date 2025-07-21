@@ -28,6 +28,7 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 	const usersCollection = client.db('practice-crud').collection('users');
+	const registerCollection = client.db('practice-crud').collection('register');
 
 	app.get('/users', async(req, res)=>{
 		const result = await usersCollection.find().toArray();
@@ -73,6 +74,20 @@ async function run() {
 		res.send(result);
 	});
 
+
+	//select form crud operation
+	app.get('/register-get', async(req, res)=>{
+		const register = req.body;
+		const result = await registerCollection.find(register).toArray();
+		res.send(result);
+
+	})
+	app.post('/register-post', async(req, res)=>{
+		const post = req.body;
+		console.log('post body:--->', post);
+		const result = await registerCollection.insertOne(post);
+		res.send(result);
+	})
 
 
     // Send a ping to confirm a successful connection

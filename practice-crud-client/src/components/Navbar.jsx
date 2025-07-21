@@ -1,10 +1,12 @@
 import { BiHome } from "react-icons/bi"
 import { CiGrid31 } from "react-icons/ci"
 import { GiBrain } from "react-icons/gi"
-import { Link } from "react-router"
+import { Link, useLocation} from "react-router"
 
 
 export default function Navbar() {
+  const {pathname} = useLocation();
+  console.log('pathname: --->', pathname);
 
   return (
 	<div className="navbar bg-base-100 shadow-sm">
@@ -52,7 +54,7 @@ export default function Navbar() {
     <li>
             <Link
               to={"/"}
-              className="border rounded-full border-gray-200 shadow px-4 py-2 bg-base-100"
+              className={pathname === "/" ? "bg-green-500 font-bold  border rounded-full border-gray-200 shadow px-4 py-2 text-white" : "border rounded-full border-gray-200 shadow px-4 py-2 bg-base-100"}
             >
               {" "}
               <BiHome size={18}></BiHome> Home
@@ -61,7 +63,7 @@ export default function Navbar() {
           <li>
             <Link
               to={"/users"}
-              className="border rounded-full border-gray-200 shadow px-4 py-2 bg-base-100"
+              className={pathname === "/users" ? "bg-green-500 font-bold  border rounded-full border-gray-200 shadow px-4 py-2 text-white" : "border rounded-full border-gray-200 shadow px-4 py-2 bg-base-100"}
             >
               {" "}
               <GiBrain size={18}></GiBrain> User
@@ -69,11 +71,20 @@ export default function Navbar() {
           </li>
           <li>
             <Link
-              to={"/creations"}
-              className="border rounded-full border-gray-200 shadow px-4 py-2 bg-base-100"
+              to={"/register-form"}
+              className={pathname === "/register-form" ? "bg-green-500 font-bold  border rounded-full border-gray-200 shadow px-4 py-2 text-white" : "border rounded-full border-gray-200 shadow px-4 py-2 bg-base-100"}
             >
               {" "}
-              <CiGrid31 size={18} /> Creations
+              <CiGrid31 size={18} /> Select Form
+            </Link>
+          </li>
+          <li>
+            <Link
+              to={"/register-get"}
+              className={pathname === "/register-get" ? "bg-green-500 font-bold  border rounded-full border-gray-200 shadow px-4 py-2 text-white" : "border rounded-full border-gray-200 shadow px-4 py-2 bg-base-100"}
+            >
+              {" "}
+              <CiGrid31 size={18} /> Register Get
             </Link>
           </li>
     </ul>
